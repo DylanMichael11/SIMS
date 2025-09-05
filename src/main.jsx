@@ -1,9 +1,11 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+
 import AuthProvider from "./auth/AuthContext";
 import AuthPage from "./pages/AuthPage";
 import Home from "./pages/Home";
+import ProductsPage from "./pages/ProductsPage"; // NEW FILE NAME
 import ProtectedRoute from "./components/ProtectedRoute";
 import "./index.css";
 
@@ -16,6 +18,7 @@ createRoot(document.getElementById("root")).render(
         <Routes>
           <Route path="/auth" element={<AuthPage />} />
           <Route path="/" element={<ProtectedRoute><Home /></ProtectedRoute>} />
+          <Route path="/products" element={<ProtectedRoute><ProductsPage /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </AuthProvider>
